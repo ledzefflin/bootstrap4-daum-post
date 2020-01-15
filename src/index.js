@@ -1,7 +1,6 @@
 import $fp from "lodash/fp";
 
 $(() => {
-  const log = console.log;
   const onModalShow = (e) => {
     const $modal = $($fp.get('target', e));
     const $modalBody = $modal.find('.modal-body');
@@ -16,7 +15,7 @@ $(() => {
       const borderSize = 1; // border 크기
 
       const width = deviceWidth >= modalBodyMaxWidth
-        ? modalBodyMaxWidth - borderSize
+        ? modalBodyMaxWidth - borderSize * 2
         : deviceWidth - modalXMargin * 2 - borderSize * 2;
       const height = deviceWidth >= modalBodyMaxWidth
         ? 444 // daum postcode pc 기본높이
@@ -31,11 +30,11 @@ $(() => {
     });
 
     const onComplete = (data) => { };
-    const onResize = $fp.curry(($modal, $modalBody, borderSize, size) => {
+    const onResize = $fp.curry(($modalBody, borderSize, size) => {
       $modalBody.css({
         height: `${$fp.get('height', size) + (borderSize * 2)}`
       });
-    })($modal, $modalBody, 1);
+    })($modalBody, 1);
 
     new daum.Postcode({
       oncomplete: onComplete,
