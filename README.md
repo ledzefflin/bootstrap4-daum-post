@@ -8,5 +8,7 @@ npm install
 npm run dev
 
 bootstrap modal에 띄우는거만 되는 예제
+
 input 요소에 바인딩은 daum 가이드 문서 참고 필요
+
 http://postcode.map.daum.net/guide
